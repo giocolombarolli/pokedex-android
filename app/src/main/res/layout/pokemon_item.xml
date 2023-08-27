@@ -28,11 +28,12 @@
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:background="@drawable/bulbasaur"
+            android:background="#424242"
             android:contentDescription="Pokemon Image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/bulbasaur" />
 
         <TextView
             android:id="@+id/pokemon_txt_code"

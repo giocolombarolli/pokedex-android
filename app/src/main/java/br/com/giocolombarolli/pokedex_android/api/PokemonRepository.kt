@@ -27,7 +27,15 @@ object PokemonRepository {
                 call: Call<PokemonsApiResult>,
                 response: Response<PokemonsApiResult>
             ) {
+
                 Log.d("POKEMON_API", "Pokemon list loaded.")
+
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    body?.results?.let {
+                        Log.d("POKEMON_API", it[0].name)
+                    }
+                }
             }
 
             override fun onFailure(call: Call<PokemonsApiResult>, t: Throwable) {

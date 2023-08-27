@@ -6,7 +6,7 @@ data class PokemonsApiResult(
     val count: Int,
     val next: String?,
     val previous: String?,
-    val result: List<PokemonResult>
+    val results: List<PokemonResult>
 )
 
 data class PokemonResult(
