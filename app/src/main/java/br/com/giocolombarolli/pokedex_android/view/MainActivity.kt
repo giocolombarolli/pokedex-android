@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.giocolombarolli.pokedex_android.R
+import br.com.giocolombarolli.pokedex_android.api.PokemonRepository
 import br.com.giocolombarolli.pokedex_android.domain.Pokemon
 import br.com.giocolombarolli.pokedex_android.domain.PokemonType
 
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity() {
             listOf(PokemonType("Grass"))
         )
         val pokemons = listOf(bulbasaur, bulbasaur, bulbasaur, bulbasaur, bulbasaur)
+
+        val pokemonsApi = PokemonRepository.listPokemons()
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
