@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.giocolombarolli.pokedex_android.R
 import br.com.giocolombarolli.pokedex_android.domain.Pokemon
+import com.bumptech.glide.Glide
 
 class PokemonAdapter(
-    private val items: List<Pokemon>
+    private val items: List<Pokemon?>
 ) : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,7 +30,7 @@ class PokemonAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindView(item: Pokemon) = with(itemView) {
+        fun bindView(item: Pokemon?) = with(itemView) {
 
             // TODO: Implement binding below
             val pokemonImg = findViewById<ImageView>(R.id.pokemon_img)
@@ -40,17 +41,19 @@ class PokemonAdapter(
 
             // TODO: Load image with Glide
 
-            pokemonCode.text = "Nº ${item.formattedNumber}"
-            pokemonName.text = item.name
-            pokemonType1.text = item.types[0].name
+            item?.let {
+                Glide.with(itemView.context).load(it.imageUrl).into(pokemonImg)
+                pokemonCode.text = "Nº ${item.formattedNumber}"
+                pokemonName.text = item.name
+                pokemonType1.text = item.types[0].name
 
-            if (item.types.size > 1) {
-                pokemonType2.visibility = View.VISIBLE
-                pokemonType2.text = item.types[1].name
-            } else {
-                pokemonType2.visibility = View.GONE
+                if (item.types.size > 1) {
+                    pokemonType2.visibility = View.VISIBLE
+                    pokemonType2.text = item.types[1].name
+                } else {
+                    pokemonType2.visibility = View.GONE
+                }
             }
-
         }
 
     }
