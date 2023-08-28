@@ -44,12 +44,12 @@ class PokemonAdapter(
             item?.let {
                 Glide.with(itemView.context).load(it.imageUrl).into(pokemonImg)
                 pokemonCode.text = "Nº ${item.formattedNumber}"
-                pokemonName.text = item.name
-                pokemonType1.text = item.types[0].name
+                pokemonName.text = item.formattedName
+                pokemonType1.text = item.types[0].name.capitalize()
 
                 if (item.types.size > 1) {
                     pokemonType2.visibility = View.VISIBLE
-                    pokemonType2.text = item.types[1].name
+                    pokemonType2.text = item.types[1].name.capitalize()
                 } else {
                     pokemonType2.visibility = View.GONE
                 }
