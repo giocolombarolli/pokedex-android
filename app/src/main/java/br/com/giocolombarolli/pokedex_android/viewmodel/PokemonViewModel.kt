@@ -8,7 +8,7 @@ import br.com.giocolombarolli.pokedex_android.domain.Pokemon
 class PokemonViewModel : ViewModel() {
     var pokemons = MutableLiveData<List<Pokemon?>>()
     val filteredPokemon = MutableLiveData<List<Pokemon?>>()
-
+    
     init {
         Thread(Runnable {
             loadPokemons()
@@ -37,7 +37,6 @@ class PokemonViewModel : ViewModel() {
             })
         }
     }
-
     fun filterPokemonByType(type: String) {
         val originalList = pokemons.value ?: emptyList()
 

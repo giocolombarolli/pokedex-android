@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: EditText
     private lateinit var loader: ProgressBar
-
+  
     private val viewModel by lazy {
         ViewModelProvider(this, PokemonViewModelFactory())[PokemonViewModel::class.java]
     }
@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             loadRecyclerView(filteredList)
         })
     }
+    
     private fun loadRecyclerView(pokemons: List<Pokemon?>) {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = PokemonAdapter(pokemons)
