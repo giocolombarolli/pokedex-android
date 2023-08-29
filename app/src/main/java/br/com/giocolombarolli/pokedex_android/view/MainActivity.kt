@@ -3,7 +3,9 @@ package br.com.giocolombarolli.pokedex_android.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.EditText
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +19,7 @@ import br.com.giocolombarolli.pokedex_android.viewmodel.PokemonViewModelFactory
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: EditText
+    private lateinit var loader: ProgressBar
 
     private val viewModel by lazy {
         ViewModelProvider(this, PokemonViewModelFactory())[PokemonViewModel::class.java]
@@ -27,8 +30,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         searchView = findViewById(R.id.svPokemons)
         recyclerView = findViewById(R.id.rvPokemons)
+        loader = findViewById(R.id.loader)
 
         viewModel.pokemons.observe(this, Observer {
+            loader.visibility = View.GONE
             loadRecyclerView(it)
         })
 
